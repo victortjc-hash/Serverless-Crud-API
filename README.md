@@ -23,4 +23,35 @@ Components
 
 Steps
 
-- 
+1 - IAM Role Creation 
+- Create a Lambda Role in IAM.
+- Named: Lambda2DynamoDB
+- Attach permission from AWS Managed Policies
+- AmazonDynamoDBFullAccess, CloudWatchLogsFullAccess
+
+<img width="1249" height="647" alt="Screenshot 2025-12-19 at 5 38 01 PM" src="https://github.com/user-attachments/assets/08d7f3a7-2dc3-4b3f-8154-d244c5612aee" />
+
+2 Create a Lambda function
+- Name: CloudWatchLogsFullAccess
+-LambdaFunctionOverHttps
+- Tested the function
+<img width="978" height="802" alt="Screenshot 2025-12-19 at 6 20 49 PM" src="https://github.com/user-attachments/assets/1ff0938b-05a2-4e82-8f2b-b5676f85ae4f" />
+
+3. Create a DynamoDB table via AWS Console
+- Table name: lambda-apigateway
+- Partition key - id (string)
+
+<img width="1539" height="708" alt="Screenshot 2025-12-19 at 6 23 41 PM" src="https://github.com/user-attachments/assets/4ee146c8-9a17-4e04-98f0-d0c630031679" />
+
+4. Create API
+- Use API Gateway Console
+- Method - Post
+<img width="1552" height="758" alt="Screenshot 2025-12-19 at 6 31 30 PM" src="https://github.com/user-attachments/assets/2543e362-35e0-444c-a0b5-98d4e6ee175c" />
+
+5. Deploy API
+- set Stage - New
+- Stage - Prod
+
+<img width="1375" height="595" alt="Screenshot 2025-12-19 at 6 39 51 PM" src="https://github.com/user-attachments/assets/a95638ab-1986-4336-ad92-e91bb691a3ea" />
+
+
