@@ -54,4 +54,42 @@ Steps
 
 <img width="1375" height="595" alt="Screenshot 2025-12-19 at 6 39 51 PM" src="https://github.com/user-attachments/assets/a95638ab-1986-4336-ad92-e91bb691a3ea" />
 
+6. Using CLI command: (this is so that AWS CLI knows which API to talk to)
+I set the environment variables:
+export API_ID=XXXXXX
+export REGION=us-east-1
+export STAGE=prod
+export RESOURCE=dynamodbmanager
+
+7. set $Body (This is to tell API what data to process)
+```
+export BODY='{
+  "operation": "create",
+  "tableName": "lambda-apigateway",
+  "payload": {
+    "Item": {
+      "id": "1",
+      "name": "Bob"
+    }
+  }
+}'
+```
+
+9. Call test-invoke-method (using IAM Credential, executes Lambda)
+aws --region $REGION --no-cli-pager apigateway test-invoke-method \
+  --rest-api-id $API_ID \
+  --resource-id <RESOURCE_ID_FROM_ABOVE> \
+  --http-method POST \
+  --body "$BODY"
+
+10. Success Response
+
+```
+ Successfully completed execution\nMon Dec 29 15:35:16 UTC 2025 : Method completed with status: 200\n",
+    "latency": 3188
+```
+
+10. I verified IAM Console to check results 
+<img width="1661" height="743" alt="Screenshot 2025-12-29 at 10 56 59 AM" src="https://github.com/user-attachments/assets/81320f5a-851d-4708-bd00-7da9bc048036" />
+
 
